@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docusaurus-deployment 
+  labels:
+    app: docusaurus
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: docusaurus
+  template:
+    metadata:
+      labels:
+        app: docusaurus
+    spec:
+      containers:
+        - name: docusaurus 
+          image: ghcr.io/vladyslav0602/my-docusaurus:latest
+          ports:
+            - containerPort: 80
